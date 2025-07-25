@@ -63,21 +63,21 @@ const Header = props => (
           <NavItem>
             <NavIconBtn type="button" onClick={toggleTheme} data-testid="theme">
               {isDarkTheme ? (
-                <BiSun color="#ffffff" size={30} />
+                <BiSun color="#ffffff" size={28} />
               ) : (
-                <BsMoon size={30} />
+                <BsMoon size={28} />
               )}
             </NavIconBtn>
           </NavItem>
           <NavItem>
             <NavIconBtn type="button" isDarkTheme={isDarkTheme}>
-              <GiHamburgerMenu size={30} />
+              <GiHamburgerMenu size={28} />
             </NavIconBtn>
           </NavItem>
           <NavItem>
             {renderPopUp(
               <NavIconBtn type="button" isDarkTheme={isDarkTheme}>
-                <FiLogOut size={30} />
+                <FiLogOut size={28} />
               </NavIconBtn>,
             )}
           </NavItem>

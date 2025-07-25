@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 
 import NxtWatchContext from './context/NxtWatchContext'
 
@@ -9,7 +9,7 @@ import LoginRoute from './components/LoginRoute'
 // import TrendingRoute from './components/TrendingRoute'
 // import GamingRoute from './components/GamingRoute'
 // import SavedVideosRoute from './components/SavedVideosRoute'
-// import NotFound from './components/NotFound'
+import NotFound from './components/NotFound'
 
 //           <ProtectedRoute exact path="/trending" component={TrendingRoute} />
 //           <ProtectedRoute exact path="/gaming" component={GamingRoute} />
@@ -18,8 +18,6 @@ import LoginRoute from './components/LoginRoute'
 //             path="/saved-videos"
 //             component={SavedVideosRoute}
 //           />
-//           <Route path="/not-found" component={NotFound} />
-//           <Redirect to="/not-found" />
 
 import './App.css'
 
@@ -28,6 +26,7 @@ class App extends Component {
     isDarkTheme: false,
     savedVideos: [],
     activeTab: 'Home',
+    showAdBanner: true,
   }
 
   toggleTheme = () => {
@@ -38,6 +37,10 @@ class App extends Component {
 
   changeTab = activeTab => {
     this.setState({activeTab})
+  }
+
+  removeBanner = () => {
+    this.setState({showAdBanner: false})
   }
 
   addVideo = video => {
@@ -56,21 +59,25 @@ class App extends Component {
   }
 
   render() {
-    const {activeTab, isDarkTheme, savedVideos} = this.state
+    const {activeTab, isDarkTheme, savedVideos, showAdBanner} = this.state
     return (
       <NxtWatchContext.Provider
         value={{
           activeTab,
-          isDarkTheme,
-          savedVideos,
           changeTab: this.changeTab,
+          isDarkTheme,
           toggleTheme: this.toggleTheme,
+          savedVideos,
           addVideo: this.addVideo,
+          showAdBanner,
+          removeBanner: this.removeBanner,
         }}
       >
         <Switch>
           <Route exact path="/login" component={LoginRoute} />
           <ProtectedRoute exact path="/" component={Home} />
+          <Route path="/not-found" component={NotFound} />
+          <Redirect to="/not-found" />
         </Switch>
       </NxtWatchContext.Provider>
     )
