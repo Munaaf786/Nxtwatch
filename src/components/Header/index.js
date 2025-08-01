@@ -6,6 +6,7 @@ import {BsMoon} from 'react-icons/bs'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {FiLogOut} from 'react-icons/fi'
 
+import MobileNavigationMenu from '../MobileNavigationMenu'
 import NxtWatchContext from '../../context/NxtWatchContext'
 
 import {
@@ -19,6 +20,7 @@ import {
   Profile,
   LogoutBtn,
   StyledPopup,
+  MobilePopup,
   ModalContainer,
   ModalDesc,
   ButtonsContainer,
@@ -30,7 +32,6 @@ const Header = props => (
   <NxtWatchContext.Consumer>
     {value => {
       const {isDarkTheme, toggleTheme} = value
-      console.log('Hello Ji')
 
       const logoutConfirmed = () => {
         const {history} = props
@@ -52,10 +53,18 @@ const Header = props => (
         </ModalContainer>
       )
 
-      const renderPopUp = triggerBtn => (
+      const renderLogoutPopUp = triggerBtn => (
         <StyledPopup modal trigger={triggerBtn} isDarkTheme={isDarkTheme}>
           {close => logoutConfirmation(close)}
         </StyledPopup>
+      )
+
+      const renderMobilePopup = triggerBtn => (
+        <MobilePopup modal trigger={triggerBtn} isDarkTheme={isDarkTheme}>
+          {close => (
+            <MobileNavigationMenu onClose={close} isDarkTheme={isDarkTheme} />
+          )}
+        </MobilePopup>
       )
 
       const renderMobileNavItemsContainer = () => (
@@ -63,21 +72,23 @@ const Header = props => (
           <NavItem>
             <NavIconBtn type="button" onClick={toggleTheme} data-testid="theme">
               {isDarkTheme ? (
-                <BiSun color="#ffffff" size={28} />
+                <BiSun color="#ffffff" size={25} />
               ) : (
-                <BsMoon size={28} />
+                <BsMoon size={25} />
               )}
             </NavIconBtn>
           </NavItem>
           <NavItem>
-            <NavIconBtn type="button" isDarkTheme={isDarkTheme}>
-              <GiHamburgerMenu size={28} />
-            </NavIconBtn>
+            {renderMobilePopup(
+              <NavIconBtn type="button" isDarkTheme={isDarkTheme}>
+                <GiHamburgerMenu size={25} />
+              </NavIconBtn>,
+            )}
           </NavItem>
           <NavItem>
-            {renderPopUp(
+            {renderLogoutPopUp(
               <NavIconBtn type="button" isDarkTheme={isDarkTheme}>
-                <FiLogOut size={28} />
+                <FiLogOut size={25} />
               </NavIconBtn>,
             )}
           </NavItem>
@@ -94,9 +105,9 @@ const Header = props => (
               ThemeBtn
             >
               {isDarkTheme ? (
-                <BiSun color="#ffffff" size={35} />
+                <BiSun color="#ffffff" size={30} />
               ) : (
-                <BsMoon size={35} />
+                <BsMoon size={30} />
               )}
             </NavIconBtn>
           </NavItem>
@@ -109,7 +120,7 @@ const Header = props => (
             </NavIconBtn>
           </NavItem>
           <NavItem>
-            {renderPopUp(
+            {renderLogoutPopUp(
               <LogoutBtn type="button" isDarkTheme={isDarkTheme}>
                 Logout
               </LogoutBtn>,

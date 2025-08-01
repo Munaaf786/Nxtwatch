@@ -1,6 +1,5 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-// import {Redirect, Link} from 'react-router-dom'
 
 import {MdClose} from 'react-icons/md'
 import {BiSearchAlt2} from 'react-icons/bi'
@@ -69,7 +68,6 @@ class Home extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok) {
       const fetchedData = await response.json()
-      console.log(fetchedData)
       const {videos} = fetchedData
       const formattedVideos = videos.map(eachVideo => ({
         id: eachVideo.id,

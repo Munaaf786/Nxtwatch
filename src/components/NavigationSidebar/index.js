@@ -1,5 +1,5 @@
 import NxtWatchContext from '../../context/NxtWatchContext'
-// import NavigationTabs from '../NavigationTabs'
+import NavigationTabs from '../NavigationTabs'
 
 import {
   NavigationContainer,
@@ -17,7 +17,7 @@ const NavigationSidebar = () => (
       const {isDarkTheme} = value
       return (
         <NavigationContainer isDarkTheme={isDarkTheme}>
-          {/* <NavigationTabs /> */}
+          <NavigationTabs />
           <ContactUsSection>
             <ContactUsPara isDarkTheme={isDarkTheme}>CONTACT US</ContactUsPara>
             <SocialMediaContainer>

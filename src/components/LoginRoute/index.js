@@ -135,7 +135,6 @@ class LoginRoute extends Component {
     }
     const response = await fetch(apiUrl, options)
     const data = await response.json()
-    console.log(data)
     if (response.ok) {
       this.onSubmitSuccess(data.jwt_token)
     } else {

@@ -8,6 +8,7 @@ import {
   VideoItemDetails,
   ChannelLogo,
   VideoDetailsContainer,
+  ChannelInfo,
   VideoTitle,
   VideoStatsContainer,
   ChannelName,
@@ -16,7 +17,7 @@ import {
   CustomLink,
 } from './styledComponents'
 
-const HomeVideoItemCard = props => {
+const TrendingVideoItemCard = props => {
   const {videoDetails} = props
   const {
     id,
@@ -59,14 +60,17 @@ const HomeVideoItemCard = props => {
                 />
                 <VideoDetailsContainer isDarkTheme={isDarkTheme}>
                   <VideoTitle>{title}</VideoTitle>
-                  <ChannelName isDarkTheme={isDarkTheme}>
-                    {formattedChannelData.channelName}
-                  </ChannelName>
-                  <VideoStatsContainer isDarkTheme={isDarkTheme}>
-                    <VideoStats>{viewCount} views</VideoStats>
-                    <DotSpan>.</DotSpan>
-                    <VideoStats>{formattedPublishedDate}</VideoStats>
-                  </VideoStatsContainer>
+                  <ChannelInfo>
+                    <ChannelName isDarkTheme={isDarkTheme}>
+                      {formattedChannelData.channelName}
+                    </ChannelName>
+                    <VideoStatsContainer isDarkTheme={isDarkTheme}>
+                      <DotSpan forMobileView>.</DotSpan>
+                      <VideoStats>{viewCount} views</VideoStats>
+                      <DotSpan>.</DotSpan>
+                      <VideoStats>{formattedPublishedDate}</VideoStats>
+                    </VideoStatsContainer>
+                  </ChannelInfo>
                 </VideoDetailsContainer>
               </VideoItemDetails>
             </CustomLink>
@@ -77,4 +81,4 @@ const HomeVideoItemCard = props => {
   )
 }
 
-export default HomeVideoItemCard
+export default TrendingVideoItemCard

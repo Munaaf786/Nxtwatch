@@ -7,7 +7,7 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${props => (props.isDarkTheme ? '#181818' : '#ebebeb')};
+  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f9f9f9')};
   transition: background-color 0.3s ease-in;
 `
 
@@ -33,7 +33,7 @@ export const VideosContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: ${props => (props.isDarkTheme ? '#181818' : '#ebebeb')};
+  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f4f4f4')};
   transition: background-color 0.3s ease-in;
   padding: 20px;
   padding-right: 0;
@@ -41,12 +41,16 @@ export const VideosContainer = styled.div`
 
 export const PremiumBanner = styled.div`
   width: 100%;
-  height: 220px;
-  background-image: URL('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  height: 240px;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   background-size: cover;
   display: flex;
   flex-direction: column;
   padding: 32px;
+
+  @media (min-width: 767px) {
+    height: 260px;
+  }
 `
 
 export const BannerLogoContainer = styled.div`
@@ -84,9 +88,10 @@ export const PremiumBannerDesc = styled.p`
   font-family: 'Roboto';
   font-size: 20px;
   color: #000000;
+  max-width: 400px;
 
   @media (min-width: 767px) {
-    font-size: 24px;
+    font-size: 22px;
   }
 `
 
@@ -99,16 +104,18 @@ export const GetItNowBtn = styled.button`
   font-size: 16px;
   font-weight: 500;
   color: #000000;
+  border-radius: 6px;
   transition: all 0.3s ease-in;
   :hover {
     background-color: #181818;
     color: #ffffff;
     transform: translateY(-5px);
+    cursor: pointer;
   }
 
   @media (min-width: 767px) {
     height: 44px;
-    width: 160px;
+    width: 140px;
     font-size: 18px;
   }
 `
@@ -134,7 +141,7 @@ export const SearchInput = styled.input`
   width: 100%;
 
   color: ${props => (props.isDarkTheme ? '#d7dfe9' : '#1e293b')};
-  background-color: ${props => (props.isDarkTheme ? '#181818' : '#ffffff')};
+  background-color: ${props => (props.isDarkTheme ? '#18181890' : '#ffffff90')};
   transition: background-color 0.3s ease-in;
 
   outline: none;
@@ -145,6 +152,11 @@ export const SearchInput = styled.input`
 
   font-family: 'Roboto';
   font-size: 16px;
+
+  :focus,
+  :hover {
+    background-color: ${props => (props.isDarkTheme ? '#181818' : '#ffffff')};
+  }
 `
 
 export const SearchBtn = styled.button`
