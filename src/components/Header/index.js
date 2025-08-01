@@ -36,6 +36,11 @@ const Header = props => (
       const logoutConfirmed = () => {
         const {history} = props
         Cookies.remove('jwt_token')
+
+        localStorage.removeItem('savedVideos');
+        localStorage.removeItem('likedVideos');
+        localStorage.removeItem('dislikedVideos');
+        
         history.replace('/login')
       }
 

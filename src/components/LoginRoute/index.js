@@ -21,8 +21,8 @@ import NxtWatchContext from '../../context/NxtWatchContext'
 
 class LoginRoute extends Component {
   state = {
-    username: '',
-    password: '',
+    username: 'rahul',
+    password: 'rahul@2021',
     errorMsg: '',
     showPassword: false,
     showSubmitError: false,
